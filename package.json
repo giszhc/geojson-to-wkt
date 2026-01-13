@@ -6,7 +6,7 @@
     "dist",
     "types"
   ],
-  "module": "dist/geojson-to-wkt.es.js",
+  "module": "dist/geojson-to-wkt.js",
   "types": "types/index.d.ts",
   "publishConfig": {
     "access": "public"

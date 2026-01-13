@@ -4,9 +4,9 @@ export default defineConfig({
     build: {
         lib: {
             entry: 'src/index.ts',
-            name: 'GeojsonToWkt',
+            name: 'GeoJSONToWKT',
             fileName: 'geojson-to-wkt',
-            formats: ['es', 'cjs']
+            formats: ['es']
         }
     }
 })

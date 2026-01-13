@@ -21,40 +21,41 @@ pnpm install @giszhc/geojson-to-wkt
 
 ## 使用方法
 
-### GeometryToWKT(geometry: Geometry): string
+### geometryToWKT(geometry: Geometry): string
 将GeoJSON Geometry对象转换为WKT格式字符串
 
 ```typescript
-import {GeometryToWKT} from '@giszhc/geojson-to-wkt';
+import {geometryToWKT} from '@giszhc/geojson-to-wkt';
 
 const point = {
     type: 'Point',
     coordinates: [120, 30]
 };
-const wkt = GeometryToWKT(point); // "POINT(120 30)"
+const wkt = geometryToWKT(point); // "POINT(120 30)"
 ```
 
-### FeatureToWKT(feature: Feature): string  
+### featureToWKT(feature: Feature): string  
 将GeoJSON Feature对象转换为WKT格式字符串
 
 ```typescript
-import {FeatureToWKT} from '@giszhc/geojson-to-wkt';
+import {featureToWKT} from '@giszhc/geojson-to-wkt';
 
 const feature = {
     type: 'Feature',
     geometry: {
         type: 'Point',
         coordinates: [120, 30]
-    }
+    },
+    properties: {}
 };
-const wkt = FeatureToWKT(feature); // "POINT(120 30)"
+const wkt = featureToWKT(feature); // "POINT(120 30)"
 ```
 
-### FeatureCollectionToWKT(featureCollection: FeatureCollection): string
+### featureCollectionToWKT(featureCollection: FeatureCollection): string
 将GeoJSON FeatureCollection对象转换为WKT格式字符串(GeometryCollection)
 
 ```typescript
-import {FeatureCollectionToWKT} from '@giszhc/geojson-to-wkt';
+import {featureCollectionToWKT} from '@giszhc/geojson-to-wkt';
 
 const featureCollection = {
     type: 'FeatureCollection',
@@ -64,26 +65,27 @@ const featureCollection = {
             geometry: {
                 type: 'Point',
                 coordinates: [120, 30]
-            }
+            },
+            properties: {}
         }
     ]
 };
-const wkt = FeatureCollectionToWKT(featureCollection); // "GEOMETRYCOLLECTION(POINT(120 30))"
+const wkt = featureCollectionToWKT(featureCollection); // "GEOMETRYCOLLECTION(POINT(120 30))"
 ```
 
 ### GeoJSONToWKT(input: GeoJSON): string
 通用转换方法，自动识别输入类型并转换为WKT格式
 
 ```typescript
-import {GeoJSONToWKT} from '@giszhc/geojson-to-wkt';
+import {toWKT} from '@giszhc/geojson-to-wkt';
 
 // 支持Geometry、Feature或FeatureCollection
-const wkt1 = GeoJSONToWKT({
+const wkt1 = toWKT({
     type: 'Point',
     coordinates: [120, 30]
 }); // "POINT(120 30)"
 
-const wkt2 = GeoJSONToWKT({
+const wkt2 = toWKT({
     type: 'Feature',
     geometry: {
         type: 'Point',

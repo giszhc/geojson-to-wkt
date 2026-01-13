@@ -2,10 +2,13 @@
   "name": "@giszhc/geojson-to-wkt",
   "version": "0.0.1",
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist",
+    "types"
+  ],
   "main": "dist/geojson-to-wkt.cjs.js",
   "module": "dist/geojson-to-wkt.es.js",
-  "types": "dist/types/index.d.ts",
+  "types": "types/index.d.ts",
   "publishConfig": {
     "access": "public"
   },

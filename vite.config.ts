@@ -7,12 +7,6 @@ export default defineConfig({
             name: 'GeojsonToWkt',
             fileName: 'geojson-to-wkt',
             formats: ['es', 'cjs']
-        },
-        rollupOptions: {
-            external: [],
-            output: {
-                exports: 'named'
-            }
         }
     }
 })

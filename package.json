@@ -6,7 +6,6 @@
     "dist",
     "types"
   ],
-  "main": "dist/geojson-to-wkt.cjs.js",
   "module": "dist/geojson-to-wkt.es.js",
   "types": "types/index.d.ts",
   "publishConfig": {

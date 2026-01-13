@@ -1,5 +1,5 @@
 import {coordToText} from './helpers';
-import type {Feature, GeoJSON, Geometry} from "./types.d.ts";
+import type {Feature, GeoJSON, Geometry} from "./types";
 
 export const geometryToWKT = (geometry: Geometry): string => {
     // @ts-ignore
@@ -7,26 +7,26 @@ export const geometryToWKT = (geometry: Geometry): string => {
 
     switch (type) {
         case 'Point':
-            return `POINT(${coordToText(coordinates)})`;
+            return `POINT (${coordToText(coordinates)})`;
 
         case 'MultiPoint':
-            return `MULTIPOINT(${coordinates.map(coordToText).join(', ')})`;
+            return `MULTIPOINT (${coordinates.map(coordToText).join(', ')})`;
 
         case 'LineString':
-            return `LINESTRING(${coordinates.map(coordToText).join(', ')})`;
+            return `LINESTRING (${coordinates.map(coordToText).join(', ')})`;
 
         case 'MultiLineString':
-            return `MULTILINESTRING(${coordinates
+            return `MULTILINESTRING (${coordinates
                 .map((l: number[][]) => `(${l.map(coordToText).join(', ')})`)
                 .join(', ')})`;
 
         case 'Polygon':
-            return `POLYGON(${coordinates
+            return `POLYGON (${coordinates
                 .map((r: number[][]) => `(${r.map(coordToText).join(', ')})`)
                 .join(', ')})`;
 
         case 'MultiPolygon':
-            return `MULTIPOLYGON(${coordinates
+            return `MULTIPOLYGON (${coordinates
                 .map(
                     (p: number[][][]) =>
                         `(${p
@@ -52,7 +52,7 @@ export const featureCollectionToWKT = (input: GeoJSON): string => {
         const WKT = input.features.map((f: any) =>
             geometryToWKT(f.geometry)
         );
-        return `GEOMETRYCOLLECTION(${WKT.join(', ')})`;
+        return `GEOMETRYCOLLECTION (${WKT.join(', ')})`;
     }
     throw new Error('输入不是FeatureCollection');
 }
